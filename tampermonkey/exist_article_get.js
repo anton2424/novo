@@ -5,7 +5,7 @@
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/blob/master/tampermonkey/
 // @updateURL    https://github.com/anton2424/novo/blob/master/tampermonkey/exist_article_get.js
-// @downloadURL  https://github.com/anton2424/novo/blob/master/tampermonkey/exist_article_get.js
+// @@downloadURL  https://github.com/anton2424/novo/blob/master/tampermonkey/exist_article_get.js
 // @match        https://www.exist.ru/Price/?pcode=*
 // @match        https://exist.ru/Price/?pcode=*
 // @match        https://www.exist.ru/Price/?pid=*
