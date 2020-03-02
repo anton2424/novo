@@ -5,7 +5,7 @@
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/raw/master/tampermonkey/
 // @updateURL    https://github.com/anton2424/novo/raw/master/tampermonkey/exist_article_get.js
-// @@downloadURL  https://github.com/anton2424/novo/raw/master/tampermonkey/exist_article_get.js
+// @downloadURL  https://github.com/anton2424/novo/raw/master/tampermonkey/exist_article_get.js
 // @match        https://www.exist.ru/Price/?pcode=*
 // @match        https://exist.ru/Price/?pcode=*
 // @match        https://www.exist.ru/Price/?pid=*
@@ -20,7 +20,7 @@
 (function() {
     'use strict';
     // DivWrapper
-    console.dir("i update 2");
+    console.dir("i update 4");
     let divWrapper = document.createElement('div');
     divWrapper.id = "ats-wrapper__article";
     divWrapper.style.position="absolute";
