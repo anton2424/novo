@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         exist_article_get
-// @version      1.0
+// @version      1.01
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
-// @namespace    https://github.com/anton2424/js-scripts/blob/master/
-// @updateURL    https://github.com/anton2424/js-scripts/blob/master/exist_article_get.js
-// @downloadURL https://github.com/anton2424/js-scripts/blob/master/exist_article_get.js
+// @namespace    https://github.com/anton2424/novo/blob/master/tampermonkey/
+// @updateURL    https://github.com/anton2424/novo/blob/master/tampermonkey/exist_article_get.js
+// @downloadURL  https://github.com/anton2424/novo/blob/master/tampermonkey/exist_article_get.js
 // @match        https://www.exist.ru/Price/?pcode=*
 // @match        https://exist.ru/Price/?pcode=*
 // @match        https://www.exist.ru/Price/?pid=*
@@ -20,6 +20,7 @@
 (function() {
     'use strict';
     // DivWrapper
+    console.dir("i update");
     let divWrapper = document.createElement('div');
     divWrapper.id = "ats-wrapper__article";
     divWrapper.style.position="absolute";
