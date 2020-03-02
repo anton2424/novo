@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         exist_article_get
-// @version      1.01
+// @version      1.02
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/blob/master/tampermonkey/
@@ -20,7 +20,7 @@
 (function() {
     'use strict';
     // DivWrapper
-    console.dir("i update");
+    console.dir("i update 2");
     let divWrapper = document.createElement('div');
     divWrapper.id = "ats-wrapper__article";
     divWrapper.style.position="absolute";
