@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         exist_article_get
-// @version      1.041
+// @version      1.05
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/raw/master/tampermonkey/
