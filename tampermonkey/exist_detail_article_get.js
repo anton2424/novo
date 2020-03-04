@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         exist_article_get
-// @version      1.05
+// @name         exist_detail_article_get
+// @version      1.07
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/raw/master/tampermonkey/
-// @updateURL    https://github.com/anton2424/novo/raw/master/tampermonkey/exist_article_get.js
-// @downloadURL  https://github.com/anton2424/novo/raw/master/tampermonkey/exist_article_get.js
+// @updateURL    https://github.com/anton2424/novo/raw/master/tampermonkey/exist_detail_article_get.js
+// @downloadURL  https://github.com/anton2424/novo/raw/master/tampermonkey/exist_detail_article_get.js
 // @match        https://www.exist.ru/Price/?pcode=*
 // @match        https://exist.ru/Price/?pcode=*
 // @match        https://www.exist.ru/Price/?pid=*
@@ -67,7 +67,14 @@
         partno = [].slice.call(partno);
         partno.map((item, index)=>{
             if (regNope.test(String(item.innerText).toLowerCase())) {
-                requestPromise.push(httpGet(item.parentElement.parentElement.children[1].href, index));
+
+                let test = null;
+                if (item.parentElement.parentElement.parentElement.length===4) {
+                    test = item.parentElement.parentElement.children[2].href;
+                } else {
+                    test = item.parentElement.parentElement.children[1].href;
+                }
+                requestPromise.push(httpGet(test, index));
             } else {
                 article.push({
                     id: index,
