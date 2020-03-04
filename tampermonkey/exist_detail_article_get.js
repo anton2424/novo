@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         exist_detail_article_get
-// @version      1.07
+// @version      1.20
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/raw/master/tampermonkey/
@@ -53,7 +53,7 @@
     let article = [];
     let requestPromise = [];
 
-    let regNope = /\./gm;
+    let regNope = /\.{3,}/;
     let regExp = {
         article: /<h1[^>]+itemprop\=\"name"[^>]+><a[^>]+[^>]+>([\s\S].+)<\/a><\/h1>/,
         title_name: /<a[^>]+id\=\"ctl00_b_ctl00_hlAbout"[^>]+[^"]+[\s\S]?([^"'].+)"<\/a>/
@@ -65,16 +65,20 @@
         let button = document.getElementById("ats-btn__article");
 
         partno = [].slice.call(partno);
-        partno.map((item, index)=>{
-            if (regNope.test(String(item.innerText).toLowerCase())) {
 
-                let test = null;
-                if (item.parentElement.parentElement.parentElement.children.length===4) {
-                    test = item.parentElement.parentElement.children[2].href;
-                } else {
-                    test = item.parentElement.parentElement.children[1].href;
-                }
-                requestPromise.push(httpGet(test, index));
+        partno.map((item, index)=>{
+            if (regNope.test(item.textContent)) {
+                let children = item.parentElement.parentElement.children;
+                let valueHref = null;
+                console.dir(item.textContent);
+
+                Array.from(children).map((childItem)=>{
+                    if (/descr/.test(childItem.className)) {
+                        valueHref = childItem.href
+                    }
+
+                });
+                requestPromise.push(httpGet(valueHref, index));
             } else {
                 article.push({
                     id: index,
