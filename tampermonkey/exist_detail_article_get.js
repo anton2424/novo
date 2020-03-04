@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         exist_detail_article_get
-// @version      1.20
+// @version      1.25
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/raw/master/tampermonkey/
@@ -128,11 +128,11 @@
                 button.textContent = "Артикулы";
             }, 3000);
 
-            textarea.style.height=`${article.length*25}px`;
+            textarea.style.height=`${article.length*15}px`;
 
             article.map((item, index)=>{
                 if (index!==article.length-1) {
-                    articleData += `${item.value}\n`;
+                    articleData += `${item.value}, `;
                 } else {
                     articleData += `${item.value}`;
                 }
