@@ -69,7 +69,7 @@
             if (regNope.test(String(item.innerText).toLowerCase())) {
 
                 let test = null;
-                if (item.parentElement.parentElement.parentElement.length===4) {
+                if (item.parentElement.parentElement.parentElement.children.length===4) {
                     test = item.parentElement.parentElement.children[2].href;
                 } else {
                     test = item.parentElement.parentElement.children[1].href;
