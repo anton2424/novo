@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         exist_detail_article_get
-// @version      1.27
+// @version      1.28
 // @description  Collect replacements on Exist.ru!
 // @author       Anton
 // @namespace    https://github.com/anton2424/novo/raw/master/tampermonkey/
@@ -53,8 +53,8 @@
     let article = [];
     let requestPromise = [];
 
-    let regNope = /\.{3,}/;
     let regExp = {
+        nope: /\.{3,}/,
         article: /<h1[^>]+itemprop\=\"name"[^>]+><a[^>]+[^>]+>([\s\S].+)<\/a><\/h1>/,
         title_name: /<a[^>]+id\=\"ctl00_b_ctl00_hlAbout"[^>]+[^"]+[\s\S]?([^"'].+)"<\/a>/
     };
@@ -67,7 +67,7 @@
         partno = [].slice.call(partno);
 
         partno.map((item, index)=>{
-            if (regNope.test(item.textContent)) {
+            if (regExp.nope.test(item.textContent)) {
                 let children = item.parentElement.parentElement.children;
                 let valueHref = null;
                 console.dir(item.textContent);
@@ -131,10 +131,12 @@
             textarea.style.height=`${50+article.length*15}px`;
 
             article.map((item, index)=>{
+
+                let value = item.value.replace(/[^a-zA-Z0-9]/g, "");
                 if (index!==article.length-1) {
-                    articleData += `${item.value}, `;
+                    articleData += `${value}, `;
                 } else {
-                    articleData += `${item.value}`;
+                    articleData += `${value}`;
                 }
             });
 
